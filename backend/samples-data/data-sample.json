@@ -1,0 +1,15 @@
+[
+  {
+    "day": 1,
+    "title": "Making a Schema",
+    "images": ["test-1.jpg", "test-2.jpg", "test-3.jpg"],
+    "completeTasks": [
+      "Set up schema for code logs",
+      "Connected react application to my node.js server"
+    ],
+    "learnings": [
+      "Mongoose schemas really provide a convenient way in modelling your data",
+      "I can utilize my own APIs and server with React"
+    ]
+  }
+]
