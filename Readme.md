@@ -1,3 +1,2 @@
-# Codeplay
-
-A practice playground for trying out new things.
+# Bug Tracker
+Bug Tracker Web Application Project
