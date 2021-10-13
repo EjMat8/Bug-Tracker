@@ -7,7 +7,14 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
+      unique: true,
       required: [true, "A name is required."],
+      set: (val) =>
+        val
+          .toLowerCase()
+          .split(" ")
+          .map((el) => `${el[0].toUpperCase()}${el.slice(1)}`)
+          .join(" "),
     },
     email: {
       type: String,
@@ -33,7 +40,7 @@ const userSchema = new mongoose.Schema(
         values: ["admin", "project manager", "developer"],
         message: "Invalid Role",
       },
-      default: "admin",
+      default: "developer",
     },
     passwordResetToken: String,
     passwordResetExpires: Date,
@@ -43,6 +50,7 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 //User must include projects and tickets
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

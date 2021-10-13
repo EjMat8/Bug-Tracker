@@ -7,6 +7,7 @@ const globalErrorController = require("./controllers/globalErrorController");
 
 const userRoutes = require("./routes/userRoutes");
 const projectRoutes = require("./routes/projectRoutes");
+const ticketRoutes = require("./routes/ticketRoutes");
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use("/cookies", (req, res) => {
 });
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
-
+app.use("/api/tickets", ticketRoutes);
 app.use("*", (_, res, next) => {
   return next(new AppError("Not Found", 404));
 });

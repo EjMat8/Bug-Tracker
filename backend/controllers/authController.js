@@ -153,7 +153,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.restrictTo = (...roles) =>
   catchAsync(async (req, _, next) => {
     if (!roles.includes(req.user.role))
-      return next(new AppError("You have no permission to change this role!"));
+      return next(new AppError("You have no permission to access this!", 403));
     next();
   });
 

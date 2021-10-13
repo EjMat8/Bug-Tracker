@@ -10,6 +10,10 @@ const projectSchema = new mongoose.Schema(
     desc: {
       type: String,
     },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
     users: [
       {
         type: mongoose.Schema.ObjectId,
@@ -24,10 +28,19 @@ const projectSchema = new mongoose.Schema(
 );
 
 projectSchema.pre("save", function (next) {
+  if (!this.isModified("name")) return next();
   this.slug = slugify(this.name, { lower: true });
+
   next();
 });
 
+projectSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "createdBy",
+    select: "name role",
+  });
+  next();
+});
 const Project = mongoose.model("Project", projectSchema);
 
 module.exports = Project;

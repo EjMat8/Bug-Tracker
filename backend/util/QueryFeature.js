@@ -6,19 +6,20 @@ class QueryFeature {
   ///(\b(gte|gt|lte|lt)\b/)
   _find() {
     const excluded = ["page", "limit", "sort", "fields"];
+    const queryString = { ...this.queryString };
     excluded.forEach((el) => {
-      if (this.queryString[el]) delete this.queryString[el];
+      if (queryString[el]) delete queryString[el];
     });
-    const queryString = JSON.stringify(this.queryString).replace(
+    const queryStringFin = JSON.stringify(queryString).replace(
       /\b(gte|gt|lte|lt)\b/,
-      (val) => `$${val}}`
+      (val) => `$${val}`
     );
-    this.query.find(JSON.parse(queryString));
+    this.query.find(JSON.parse(queryStringFin));
     return this;
   }
   _sort() {
     const sortString = !this.queryString.sort
-      ? "_id -createdAt"
+      ? "-_id"
       : this.queryString.sort.split(",").join(" ");
     this.query.sort(sortString);
     return this;
@@ -30,12 +31,12 @@ class QueryFeature {
     this.query.select(fieldsString);
     return this;
   }
-  _paginate(limitOp = null) {
+  _paginate(options) {
     const page = this.queryString.page || 1;
-    const limit = limitOp || this.queryString.limit || 20;
+    const limit = options.limit || this.queryString.limit || 20;
     const skip = (page - 1) * limit;
 
-    this.query.skip(skip).limit(limit);
+    this.query.skip(+skip).limit(+limit);
     return this;
   }
 }

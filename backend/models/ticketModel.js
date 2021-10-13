@@ -10,16 +10,17 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please describe your ticket"],
   },
-  author: {
+  createdBy: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
     required: [true, "A ticket must have at least one author"],
   },
   project: {
-    type: mongoose.Schmema.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: "Project",
     required: [true, "A ticket must be contained in the project"],
   },
+  slug: String,
   deadline: Date,
   status: {
     type: String,
@@ -43,3 +44,12 @@ const ticketSchema = new mongoose.Schema({
     },
   },
 });
+
+ticketSchema.pre("save", function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+});
+
+const Ticket = mongoose.model("Ticket", ticketSchema);
+
+module.exports = Ticket;
