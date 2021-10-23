@@ -42,6 +42,7 @@ const userSchema = new mongoose.Schema(
       },
       default: "developer",
     },
+    projects: [{ type: mongoose.Schema.ObjectId, ref: "Project" }],
     passwordResetToken: String,
     passwordResetExpires: Date,
     passwordChangedAt: Date,
@@ -59,6 +60,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+userSchema.pre("save", function (next) {
+  if (!this.isModified("projects")) return next();
+  const userProjString = this.projects.map((el) => el.toString());
+  this.projects = [...new Set(userProjString)];
+  next();
+});
 userSchema.pre("save", function (next) {
   if (!this.isModified("password") || this.isNew) return next();
 

@@ -1,0 +1,32 @@
+.btn {
+  border: none;
+  background: $color-brand;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  &--err {
+    background: $color-red;
+  }
+  &:active {
+    transform: scale(1.04);
+  }
+  &--light {
+    background: none;
+    background-image: $color-brand-gradient;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 1;
+    border-bottom: none;
+  }
+  &--inactive {
+    opacity: 0.4;
+  }
+  &--active {
+    border-bottom: 5px solid $color-brand;
+  }
+}

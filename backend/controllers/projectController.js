@@ -13,7 +13,7 @@ exports.createProject = crudFactory.create(Project, true);
 exports.getOneProject = crudFactory.getOne(Project, {
   belongsToUser: "project",
 
-  popUsers: { path: "users", select: "name email role" },
+  popUsers: { path: "tickets" },
 });
 
 exports.updateProject = crudFactory.update(Project, {
@@ -31,7 +31,7 @@ exports.updateUsersInProject = (remove = false) =>
     if (!updatedUsers)
       return next(new AppError("Was not able to find to update users", 404));
 
-    const usersIdString = updatedUsers.users.map((el) => el.toString());
+    const usersIdString = updatedUsers.users.map((el) => el._id.toString());
     if (!remove)
       updatedUsers.users = [...new Set([...usersIdString, ...req.body.users])];
     else

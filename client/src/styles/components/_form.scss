@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+
+  & input {
+    border: none;
+    padding: 0.8rem 1.4rem;
+    font-size: 1.7rem;
+    background: none;
+
+    border-bottom: 1px solid #dddddd;
+  }
+  & button,
+  & input {
+    width: 60%;
+  }
+}

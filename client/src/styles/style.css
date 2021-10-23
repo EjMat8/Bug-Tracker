@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+*:focus {
+  outline: none; }
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 1.7rem; }
+
+.heading-1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 5rem; }
+
+.heading-4 {
+  color: #252525;
+  font-size: 2rem; }
+
+.logo-auth {
+  height: 15rem;
+  width: 15rem;
+  fill: #fff; }
+
+.main-content {
+  display: grid;
+  grid-template-columns: 0.75fr 3fr;
+  height: 100vh; }
+  .main-content .sidebar {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 2rem 0; }
+    .main-content .sidebar__welcome {
+      margin-bottom: 5.5rem;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: #242424; }
+    .main-content .sidebar__nav {
+      width: 100%; }
+      .main-content .sidebar__nav ul {
+        list-style: none;
+        padding: 0 3.5rem; }
+      .main-content .sidebar__nav-item {
+        display: grid;
+        column-gap: 2rem;
+        align-items: center;
+        grid-template-columns: repeat(2, max-content);
+        color: #6d6d6d;
+        transition: all 0.2s linear; }
+        .main-content .sidebar__nav-item--active {
+          background: #27d9d6;
+          color: #ffffff;
+          padding: 1rem 2rem;
+          border-radius: 10px;
+          transform: translateX(3px) scale(1.04);
+          box-shadow: 0 5px 9px rgba(0, 0, 0, 0.23); }
+        .main-content .sidebar__nav-item:not(:last-of-type) {
+          margin-bottom: 2.8rem; }
+        .main-content .sidebar__nav-item > * {
+          color: inherit; }
+        .main-content .sidebar__nav-item a {
+          text-decoration: none; }
+    .main-content .sidebar__heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 2rem;
+      text-transform: uppercase;
+      color: #2ecc71;
+      font-size: 2.5rem;
+      margin-bottom: 0.7rem; }
+      .main-content .sidebar__heading .icon {
+        margin-right: 1rem;
+        transform: translateY(1.5px);
+        fill: currentColor;
+        height: 3rem;
+        width: 3rem; }
+    .main-content .sidebar button {
+      margin-top: 3rem; }
+  .main-content .content {
+    display: grid;
+    grid-template-columns: minmax(5rem, 1fr) repeat(6, minmax(19rem, 1fr)) minmax(2.5rem, 1fr);
+    grid-template-rows: repeat(2, 8rem) repeat(auto-fill, minmax(8.5rem, 1fr));
+    background: #f5f5f5; }
+    .main-content .content__label {
+      grid-column: 1/-1;
+      grid-row: 1/3;
+      background: linear-gradient(160.71deg, #29e3ab -4.17%, #2ecc71 59.43%, #29e342 128.56%);
+      padding-top: 2rem;
+      padding-left: 3.5rem; }
+      .main-content .content__label-heading {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 5rem; }
+    .main-content .content__visuals {
+      grid-column: 2/8;
+      grid-row: 2/-1;
+      padding: 3rem 0; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem; }
+  .form input {
+    border: none;
+    padding: 0.8rem 1.4rem;
+    font-size: 1.7rem;
+    background: none;
+    border-bottom: 1px solid #dddddd; }
+  .form button,
+  .form input {
+    width: 60%; }
+
+.btn {
+  border: none;
+  background: #2ecc71;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s; }
+  .btn--err {
+    background: #ff0033; }
+  .btn:active {
+    transform: scale(1.04); }
+  .btn--light {
+    background: none;
+    background-image: linear-gradient(160.71deg, #29e3ab -4.17%, #2ecc71 59.43%, #29e342 128.56%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 1;
+    border-bottom: none; }
+  .btn--inactive {
+    opacity: 0.4; }
+  .btn--active {
+    border-bottom: 5px solid #2ecc71; }
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px; }
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #2ecc71;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s; }
+
+@keyframes lds-ripple {
+  0% {
+    top: 40px;
+    left: 40px;
+    width: 0;
+    height: 0;
+    opacity: 1; }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 80px;
+    height: 80px;
+    opacity: 0; } }
+
+.auth-page {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-columns: repeat(2, 1fr); }
+  .auth-page__left {
+    background: linear-gradient(160.71deg, #29e3ab -4.17%, #2ecc71 59.43%, #29e342 128.56%); }
+  .auth-page__right {
+    background: #f5f5f5;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .auth-page__right > div,
+  .auth-page__left > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 92.5%; }
+  .auth-page__right > div {
+    gap: 2.5rem; }
+  .auth-page__left > div {
+    align-items: center;
+    gap: 3rem; }
+  .auth-page__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.3rem; }
+    .auth-page__actions .btn {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px; }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem; }
+
+.ticket-stats {
+  background: #f5f5f5;
+  box-shadow: 2px 6px 15px -1px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; }
+  .ticket-stats h4 {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+  .ticket-stats__content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem; }
+  .ticket-stats__chart {
+    background: teal;
+    height: 185px;
+    width: 185px;
+    border-radius: 50%; }

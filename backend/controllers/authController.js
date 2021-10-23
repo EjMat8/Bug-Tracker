@@ -40,32 +40,36 @@ exports.signup = catchAsync(async (req, res, next) => {
   sendTokenCookie(newUser, 201, res);
 });
 
-exports.protectRoute = catchAsync(async (req, res, next) => {
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.includes("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies.jwt) {
-    token = req.cookies.jwt;
-  } else return next(new AppError("You are not logged in.", 401));
+exports.protectRoute = (persist = false) =>
+  catchAsync(async (req, res, next) => {
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.includes("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
+    } else {
+      if (!persist) return next(new AppError("You are not logged in.", 401));
+      else res.status(200).json({ status: "success" });
+    }
 
-  const verifiedToken = await promisify(jwt.verify)(
-    token,
-    process.env.JWT_SECRET
-  );
-
-  const user = await User.findById(verifiedToken.id);
-  if (!user) return next(new AppError("Could not find user", 401));
-
-  if (!user.checkPassChanged(verifiedToken.iat))
-    return next(
-      new AppError("Password was recently changed please log in again", 401)
+    const verifiedToken = await promisify(jwt.verify)(
+      token,
+      process.env.JWT_SECRET
     );
-  req.user = user;
-  next();
-});
+
+    const user = await User.findById(verifiedToken.id);
+    if (!user) return next(new AppError("Could not find user", 401));
+
+    if (!user.checkPassChanged(verifiedToken.iat))
+      return next(
+        new AppError("Password was recently changed please log in again", 401)
+      );
+    req.user = user;
+    next();
+  });
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -175,3 +179,15 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.password = undefined;
   res.status(200).json({ status: "success", data: { user } });
 });
+
+exports.logout = (_, res) => {
+  res.cookie("jwt", "qodfnaisdfn1231", {
+    expiresIn: Date.now() + 10 * 1000,
+    httpOnly: true,
+  });
+  res.status(200).json({ status: "success" });
+};
+
+exports.stayLoggedIn = (req, res) => {
+  res.status(200).json({ status: "success", data: { user: req.user } });
+};

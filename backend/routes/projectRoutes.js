@@ -5,7 +5,7 @@ const ticketRoutes = require("../routes/ticketRoutes");
 const router = express.Router();
 
 router.use("/:projectid/tickets", ticketRoutes);
-router.use(authController.protectRoute);
+router.use(authController.protectRoute());
 router
   .route("/")
   .get(projectController.getAllProject)
@@ -13,7 +13,6 @@ router
     authController.restrictTo("admin", "project manager"),
     projectController.createProject
   );
-
 router
   .route("/:id")
   .get(projectController.getOneProject)
@@ -39,4 +38,5 @@ router
     authController.restrictTo("admin", "project manager"),
     projectController.updateUsersInProject(true)
   );
+
 module.exports = router;

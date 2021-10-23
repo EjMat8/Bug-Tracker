@@ -39,7 +39,7 @@ const ticketSchema = new mongoose.Schema({
   type: {
     type: String,
     enum: {
-      values: ["Issue", "Bug", "Feature Request"],
+      values: ["Issue", "Bug", "Feature"],
       message: "Invalid value",
     },
   },
