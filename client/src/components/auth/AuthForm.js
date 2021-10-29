@@ -41,17 +41,39 @@ const AuthForm = ({ signIn }) => {
   };
   return (
     <form className="form" autoComplete="off" onSubmit={signInHandler}>
-      {!signIn && <input type="text" placeholder="Name" ref={nameRef} />}
-      <input type="email" placeholder="Email" ref={emailRef} />
-      <input type="password" placeholder="Password" ref={passRef} />
       {!signIn && (
         <input
+          type="text"
+          placeholder="Name"
+          ref={nameRef}
+          className="form__auth-input"
+        />
+      )}
+      <input
+        type="email"
+        placeholder="Email"
+        ref={emailRef}
+        className="form__auth-input"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        ref={passRef}
+        className="form__auth-input"
+      />
+      {!signIn && (
+        <input
+          className="form__auth-input"
           type="password"
           placeholder="Confirm Password"
           ref={confirmPassRef}
         />
       )}
-      <button type="submit" className="btn" style={{ marginTop: "10px" }}>
+      <button
+        type="submit"
+        className="btn form__auth-button"
+        style={{ marginTop: "10px" }}
+      >
         {signIn ? "Sign In" : "Sign Up"}
       </button>
     </form>

@@ -9,7 +9,6 @@
 *:focus {
   outline: none;
 }
-
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -19,18 +18,15 @@ body {
   font-family: "Lato", sans-serif;
   font-size: 1.7rem;
 }
-
 .heading-1 {
   color: #fff;
   text-transform: uppercase;
   font-size: 5rem;
 }
-
 .heading-4 {
   color: $color-dark;
   font-size: 2rem;
 }
-
 .logo-auth {
   height: 15rem;
   width: 15rem;

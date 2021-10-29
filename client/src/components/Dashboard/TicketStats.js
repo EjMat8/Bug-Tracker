@@ -18,4 +18,4 @@ const TicketStats = (props) => {
   );
 };
 
-export default TicketStats;
+export default React.memo(TicketStats);

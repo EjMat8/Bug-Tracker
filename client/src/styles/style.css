@@ -48,7 +48,8 @@ body {
       margin-bottom: 5.5rem;
       font-size: 1.4rem;
       text-transform: uppercase;
-      color: #242424; }
+      color: #242424;
+      text-align: center; }
     .main-content .sidebar__nav {
       width: 100%; }
       .main-content .sidebar__nav ul {
@@ -93,9 +94,9 @@ body {
       margin-top: 3rem; }
   .main-content .content {
     display: grid;
-    grid-template-columns: minmax(5rem, 1fr) repeat(6, minmax(19rem, 1fr)) minmax(2.5rem, 1fr);
+    grid-template-columns: minmax(5rem, 1fr) repeat(6, minmax(min-content, 19rem)) minmax(2.5rem, 1fr);
     grid-template-rows: repeat(2, 8rem) repeat(auto-fill, minmax(8.5rem, 1fr));
-    background: #f5f5f5; }
+    background: #f0f0f0; }
     .main-content .content__label {
       grid-column: 1/-1;
       grid-row: 1/3;
@@ -116,23 +117,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 1.8rem; }
-  .form input {
-    border: none;
-    padding: 0.8rem 1.4rem;
-    font-size: 1.7rem;
-    background: none;
-    border-bottom: 1px solid #dddddd; }
-  .form button,
-  .form input {
-    width: 60%; }
+  align-items: center; }
+  .form__heading {
+    font-size: 1.8rem; }
 
 .btn {
   border: none;
   background: #2ecc71;
-  color: #fff;
-  padding: 1rem 2rem;
+  color: #ffffff;
+  padding: 0.8rem 1.4rem;
   font-size: 1.8rem;
   border-radius: 10px;
   font-weight: 400;
@@ -154,6 +147,10 @@ body {
     opacity: 0.4; }
   .btn--active {
     border-bottom: 5px solid #2ecc71; }
+  .btn-actions {
+    display: flex; }
+    .btn-actions .btn:not(:last-of-type) {
+      margin-right: 0.7rem; }
 
 .lds-ripple {
   display: inline-block;
@@ -184,6 +181,82 @@ body {
     width: 80px;
     height: 80px;
     opacity: 0; } }
+
+.card__heading {
+  color: #f3f3f3;
+  background: #27d9d6;
+  padding: 0.8rem 1.6rem;
+  width: max-content;
+  position: relative;
+  top: 25px;
+  left: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
+  .card__heading-title {
+    font-size: 3rem;
+    display: block; }
+  .card__heading-desc {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    word-spacing: 1px; }
+
+.card__content {
+  background: #fafafa;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.18);
+  padding: 3.5rem 2rem 2rem 2rem;
+  border-radius: 5px; }
+
+.pagination {
+  display: flex; }
+  .pagination button {
+    border: none;
+    color: #2ecc71;
+    background: #fff;
+    border: 2px solid #2ecc71;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px; }
+    .pagination button:not(:last-child) {
+      margin-right: 1rem; }
+
+.grid {
+  display: grid;
+  align-items: center; }
+  .grid__label {
+    border-bottom: 1px solid black;
+    padding: 1rem 0 0.5rem 0; }
+  .grid__data {
+    border-bottom: 1px solid #d1d1d1;
+    color: #4b4b4b;
+    padding: 1.3rem 0; }
+    .grid__data:nth-last-child(3), .grid__data:nth-last-child(2), .grid__data:last-child {
+      border-bottom: 1px solid #131313; }
+  .grid__action {
+    display: flex;
+    justify-content: space-between; }
+  .grid__edit {
+    transform: translateY(2px) scale(1.3);
+    margin-left: 5px;
+    fill: #2ecc71;
+    cursor: pointer; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+  .modal__container {
+    padding: 1rem 1.7rem;
+    background: #f3f3f3;
+    border-radius: 5px;
+    position: relative;
+    top: 15rem;
+    left: 0; }
 
 .auth-page {
   display: grid;
@@ -216,9 +289,52 @@ body {
       font-size: 2rem;
       letter-spacing: 1px; }
 
+.form__auth-input {
+  border: none;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.7rem;
+  background: none;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 1.5rem; }
+
+.form__auth-button, .form__auth-input {
+  width: 60%; }
+
+.role-control {
+  border: none;
+  font-size: 2rem;
+  margin-bottom: 1rem; }
+  .role-control label {
+    display: flex;
+    align-items: center; }
+  .role-control input {
+    display: none; }
+    .role-control input:checked + label .custom-radio::after {
+      background: #2ecc71; }
+
+.custom-radio {
+  display: inline-block;
+  border: 3px solid #2ecc71;
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+  position: relative; }
+  .custom-radio::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: transparent;
+    transition: background 0.2s ease-out; }
+
 .dashboard {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(37rem, 1fr));
   gap: 3.5rem; }
 
 .ticket-stats {

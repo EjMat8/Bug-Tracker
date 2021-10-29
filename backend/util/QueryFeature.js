@@ -11,7 +11,7 @@ class QueryFeature {
       if (queryString[el]) delete queryString[el];
     });
     const queryStringFin = JSON.stringify(queryString).replace(
-      /\b(gte|gt|lte|lt)\b/,
+      /\b(gte|gt|lte|lt|ne)\b/,
       (val) => `$${val}`
     );
     this.query.find(JSON.parse(queryStringFin));

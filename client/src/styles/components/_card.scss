@@ -1,0 +1,28 @@
+.card {
+  // transform: translateY(-2vw);
+  &__heading {
+    color: #f3f3f3;
+    background: $color-brand-v-light;
+    padding: 0.8rem 1.6rem;
+    width: max-content;
+    position: relative;
+    top: 25px;
+    left: 15px;
+    box-shadow: $shadow-1;
+    &-title {
+      font-size: 3rem;
+      display: block;
+    }
+    &-desc {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      word-spacing: 1px;
+    }
+  }
+  &__content {
+    background: #fafafa;
+    box-shadow: $shadow-2;
+    padding: 3.5rem 2rem 2rem 2rem;
+    border-radius: 5px;
+  }
+}

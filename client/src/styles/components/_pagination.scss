@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+
+  & button {
+    border: none;
+    color: $color-brand;
+    background: #fff;
+    border: 2px solid $color-brand;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}

@@ -17,4 +17,9 @@ router.route("/updatePassword").patch(authController.updatePassword);
 router.use(authController.restrictTo("admin", "project manager"));
 router.route("/").get(userController.getAllUser);
 router.route("/:id").get(userController.getUser);
+
+router
+  .route("/updateUserRole/:id")
+  .patch(authController.restrictTo("admin"), userController.updateUserRole);
+
 module.exports = router;
