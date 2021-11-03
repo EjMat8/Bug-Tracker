@@ -1,7 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-const COLORS = ["#0088FE", "#ff0033", "#FFBB28"];
+const COLORS = ["#ff0033", "#0088FE", "#FFBB28"];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
@@ -30,7 +30,6 @@ const renderCustomizedLabel = ({
 };
 
 export default function TicketChart({ stats }) {
-  console.log(stats);
   return (
     <PieChart width={210} height={210}>
       <Pie

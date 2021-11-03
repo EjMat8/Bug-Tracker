@@ -11,6 +11,7 @@ import RolesPage from "./pages/RolesPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import TicketsPage from "./pages/TicketsPage";
+import ProjectPage from "./pages/ProjectPage";
 
 import Spinner from "./components/UI/Spinner";
 
@@ -61,9 +62,13 @@ const App = () => {
         <Route path="/user-profile">
           <ProfilePage />
         </Route>
+        <Route path="/projects/:id">
+          <ProjectPage />
+        </Route>
         <Route path="/projects">
           <ProjectsPage />
         </Route>
+
         <Route path="/my-tickets">
           <TicketsPage />
         </Route>

@@ -11,7 +11,19 @@
     &:checked + label .custom-radio::after {
       background: $color-brand;
     }
+    &:disabled + label {
+      .custom-radio {
+        border: 3px solid $color-brand-v-light;
+        &::after {
+          background: $color-brand-v-light;
+        }
+      }
+    }
   }
+}
+.role-form {
+  align-items: flex-start;
+  padding: 1.4rem;
 }
 .custom-radio {
   display: inline-block;

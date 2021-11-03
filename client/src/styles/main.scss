@@ -1,6 +1,7 @@
 @import "./abstract/variables";
 @import "./abstract/mixins";
 @import "./base/base";
+@import "./base/utilities";
 @import "./layout";
 @import "./components/form";
 @import "./components/button";
@@ -12,3 +13,4 @@
 @import "./auth";
 @import "./role";
 @import "./dashboard";
+@import "./projects";

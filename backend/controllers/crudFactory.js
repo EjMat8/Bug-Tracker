@@ -41,6 +41,7 @@ exports.getAll = (Model, options = {}) =>
     const editQuery = restrictUserReadAndWrite(query.query, req, options);
 
     const data = await editQuery.find(filter);
+
     res.status(200).json({ status: "success", data: { data } });
   });
 
@@ -52,7 +53,9 @@ exports.create = (Model, author) =>
     const doc = await Model.create(req.body);
 
     if (!doc)
-      return next(new AppError("Something went wrong creating project", 404));
+      return next(
+        new AppError("Something went wrong creating the document", 404)
+      );
     res.status(200).json({ status: "success", data: { doc } });
   });
 

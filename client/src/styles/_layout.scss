@@ -78,7 +78,7 @@
   & .content {
     display: grid;
     grid-template-columns:
-      minmax(5rem, 1fr) repeat(6, minmax(min-content, 19rem))
+      minmax(2.5em, 1fr) repeat(6, minmax(min-content, 19rem))
       minmax(2.5rem, 1fr);
     grid-template-rows: repeat(2, 8rem) repeat(auto-fill, minmax(8.5rem, 1fr));
     background: rgb(240, 240, 240);

@@ -31,6 +31,9 @@ body {
   width: 15rem;
   fill: #fff; }
 
+.move-up-lg {
+  transform: translateY(-3.5rem); }
+
 .main-content {
   display: grid;
   grid-template-columns: 0.75fr 3fr;
@@ -94,7 +97,7 @@ body {
       margin-top: 3rem; }
   .main-content .content {
     display: grid;
-    grid-template-columns: minmax(5rem, 1fr) repeat(6, minmax(min-content, 19rem)) minmax(2.5rem, 1fr);
+    grid-template-columns: minmax(2.5em, 1fr) repeat(6, minmax(min-content, 19rem)) minmax(2.5rem, 1fr);
     grid-template-rows: repeat(2, 8rem) repeat(auto-fill, minmax(8.5rem, 1fr));
     background: #f0f0f0; }
     .main-content .content__label {
@@ -311,6 +314,14 @@ body {
     display: none; }
     .role-control input:checked + label .custom-radio::after {
       background: #2ecc71; }
+    .role-control input:disabled + label .custom-radio {
+      border: 3px solid #27d9d6; }
+      .role-control input:disabled + label .custom-radio::after {
+        background: #27d9d6; }
+
+.role-form {
+  align-items: flex-start;
+  padding: 1.4rem; }
 
 .custom-radio {
   display: inline-block;
@@ -354,3 +365,7 @@ body {
     height: 185px;
     width: 185px;
     border-radius: 50%; }
+
+.project-link {
+  text-decoration: none;
+  color: #4843cc; }

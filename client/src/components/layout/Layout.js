@@ -6,8 +6,16 @@ import { useLocation } from "react-router-dom";
 import Navigation from "./Navigation";
 import { logout } from "../../store/authActions";
 
-const labelForm = (val) =>
-  (val.includes("-") ? val.split("-").join(" ") : val).slice(1);
+const labelForm = (val) => {
+  const indexSlash1 = val.indexOf("/");
+  const indexSlash2 = val.lastIndexOf("/");
+
+  val = val.replace(/-/g, " ");
+
+  if (indexSlash1 !== indexSlash2) {
+    return val.slice(indexSlash2 + 1);
+  } else return val.slice(1);
+};
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();

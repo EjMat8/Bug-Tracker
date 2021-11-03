@@ -49,9 +49,8 @@ projectSchema.methods.saveProjectToUser = async (id, projectId) => {
 projectSchema.pre("save", async function (next) {
   const doc = this;
   if (!this.isModified("createdBy") && !this.isModified("users")) return next();
-  console.log("hi");
+
   if (this.isModified("createdBy")) {
-    console.log(this);
     await this.saveProjectToUser(this.createdBy, this.id);
   }
   if (this.isModified("users")) {
